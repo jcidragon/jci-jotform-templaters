@@ -3,12 +3,19 @@
   <head>
     <title>JotForm 神器</title>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
     <img src="logo_logo.jpg">
     <h1>JotForm 神器</h1>
+    <h2>自訂格式</h2>
     <form action="/generate" method="POST" enctype="multipart/form-data">
       <input type="file" name="template" required>
+      <input type="submit">
+    </form>
+    <hr>
+    <h2>預設格式</h2>
+    <form action="/generate-default" method="POST" enctype="multipart/form-data">
       <input type="submit">
     </form>
   </body>
