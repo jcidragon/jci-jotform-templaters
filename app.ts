@@ -29,7 +29,7 @@ const upload = multer({
 
 app.post('/generate', upload.single('template'), async (req, res) => {
   try {
-    const submissionsResponse = await axios.get(`http://api.jotform.com/form/83159166506461/submissions?apiKey=${process.env.API_KEY}`);
+    const submissionsResponse = await axios.get(`http://api.jotform.com/form/83159166506461/submissions?apiKey=${process.env.API_KEY}&limit=99`);
     const buffer = convert(submissionsResponse.data, req.file.buffer);
 
     res.type('docx');
@@ -41,7 +41,7 @@ app.post('/generate', upload.single('template'), async (req, res) => {
 
 app.post('/generate-default', async (req, res) => {
   try {
-    const submissionsResponse = await axios.get(`http://api.jotform.com/form/83159166506461/submissions?apiKey=${process.env.API_KEY}`);
+    const submissionsResponse = await axios.get(`http://api.jotform.com/form/83159166506461/submissions?apiKey=${process.env.API_KEY}&limit=99`);
     const buffer = convert(submissionsResponse.data, await readFilePromise(__dirname + '/template-report.docx'));
 
     res.type('docx');
